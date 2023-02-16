@@ -8,14 +8,9 @@ import time
 import os
 from discord.ext import commands
 from discord.utils import get
-from dotenv import load_dotenv
-from pathlib import Path
 
-env_path = Path('./botenvargs.env')
-load_dotenv(dotenv_path=env_path)
-
-TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
+TOKEN = os.environ['DISCORD_TOKEN']
+GUILD = os.environ['DISCORD_GUILD']
 
 intents = discord.Intents.all()
 intents.members = True
