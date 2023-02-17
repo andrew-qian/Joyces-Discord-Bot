@@ -80,9 +80,9 @@ async def start(ctx):
 
         time.sleep(300)
 
-@bot.command(name='help')
-async def help(ctx):
-    await ctx.send('My primary objective is to hate Gerardo Tolentino IV.')
+@bot.command(name='fuckyougrad')
+async def fuckyougrad(ctx):
+    await ctx.send('fuck you grad')
 
 @bot.command(name= 'end')
 async def end(ctx):
