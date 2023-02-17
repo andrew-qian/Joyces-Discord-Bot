@@ -81,11 +81,11 @@ async def start(ctx):
         time.sleep(300)
 
 @bot.command(name='help')
-async def start(ctx):
+async def help(ctx):
     await ctx.send('My primary objective is to hate Gerardo Tolentino IV.')
 
 @bot.command(name= 'end')
-async def start(ctx):
+async def end(ctx):
     if ctx.message.author.id =='380112064401899520':
         await ctx.bot.logout()
 
