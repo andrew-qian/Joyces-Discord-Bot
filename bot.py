@@ -84,4 +84,9 @@ async def start(ctx):
 async def start(ctx):
     await ctx.send('My primary objective is to hate Gerardo Tolentino IV.')
 
+@bot.command(name= 'end')
+async def start(ctx):
+    if ctx.message.author.id =='380112064401899520':
+        await ctx.bot.logout()
+
 bot.run(TOKEN)
