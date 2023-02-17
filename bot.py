@@ -59,12 +59,9 @@ async def main(ctx, oldelements):
 
     searched_role = get(guild.roles, name='Joyces')
 
-    if (len(elements) + len(elements2) > 0):
+    if (len(elements) + len(elements2) > 0 and newlen != origlen):
         await ctx.send(output)
-        if (newlen != origlen):
-            await ctx.send(searched_role.mention)
-    else:
-        await ctx.send("No BTWs found.")
+        await ctx.send(searched_role.mention)
 
     return oldelements
 
@@ -82,7 +79,7 @@ async def start(ctx):
 
 @bot.command(name='fuckyougrad')
 async def fuckyougrad(ctx):
-    await ctx.send('fuck you grad')
+    await ctx.send('fuck you grad') #fix later
 
 @bot.command(name= 'end')
 async def end(ctx):
