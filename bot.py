@@ -80,4 +80,8 @@ async def start(ctx):
 
         time.sleep(300)
 
+@bot.command(name='help')
+async def start(ctx):
+    await ctx.send('My primary objective is to hate Gerardo Tolentino IV.')
+
 bot.run(TOKEN)
