@@ -25,7 +25,6 @@ async def main(ctx, oldelements):
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
     chrome_options.add_experimental_option('useAutomationExtension', False)
-    chrome_options.add_argument("window-size=1920,1080")
 
     chromedriver = "./chromedriver"
     driver = webdriver.Chrome(service = Service(chromedriver), options=chrome_options)
