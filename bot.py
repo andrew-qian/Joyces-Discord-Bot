@@ -11,6 +11,8 @@ from discord.utils import get
 
 TOKEN = os.environ['DISCORD_TOKEN']
 GUILD = os.environ['DISCORD_GUILD']
+JOYCES_USERNAME = os.environ['JOYCES_USERNAME']
+JOYCES_PASSWORD = os.environ['JOYCES_PASSWORD']
 
 intents = discord.Intents.all()
 intents.members = True
@@ -36,10 +38,10 @@ async def main(ctx, oldelements):
     driver.get(url)
 
     username = driver.find_element(By.XPATH, '//*[@id="username"]')
-    username.send_keys('Qia12779')
+    username.send_keys(JOYCES_USERNAME)
 
     password = driver.find_element(By.XPATH, '//*[@id="password"]')
-    password.send_keys('9418123')
+    password.send_keys(JOYCES_PASSWORD)
 
     sign_in = driver.find_element(By.XPATH, '/html/body/div[3]/form[1]/div[6]/button')
     sign_in.click()
