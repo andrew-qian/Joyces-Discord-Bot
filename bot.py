@@ -81,9 +81,6 @@ async def start(ctx):
 
         time.sleep(300)
 
-@bot.command(name='fuckyougrad')
-async def fuckyougrad(ctx):
-    await ctx.send('fuck you grad') #fix later
 
 @bot.command(name= 'end')
 async def end(ctx):
