@@ -34,6 +34,7 @@ async def main(ctx, oldelements):
 
     chromedriver = "./chromedriver"
     driver = webdriver.Chrome(service = Service(chromedriver), options=chrome_options)
+    driver.implicitly_wait(10)
     # chromedriver = ChromeDriverManager().install()
 
     # driver = webdriver.Chrome(chromedriver)
