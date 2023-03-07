@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
+import asyncio
 import os
 from discord.ext import commands
 from discord.utils import get
@@ -86,7 +86,8 @@ async def start(ctx):
     while (True):
         oldelements = await main(ctx, oldelements)
 
-        time.sleep(300)
+        await asyncio.sleep(300)
+
 
 
 @bot.command(name= 'end')
