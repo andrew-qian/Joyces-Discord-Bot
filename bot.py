@@ -4,6 +4,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
 from discord.ext import commands
@@ -20,12 +22,14 @@ intents.members = True
 bot = commands.Bot(command_prefix='-', intents=intents)
 
 async def main(ctx, oldelements):
+    print("Searching...")
     origlen = len(oldelements)
     chrome_options = Options()
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
     chrome_options.add_experimental_option('useAutomationExtension', False)
 
     chromedriver = "./chromedriver"
@@ -43,8 +47,7 @@ async def main(ctx, oldelements):
     password = driver.find_element(By.XPATH, '//*[@id="password"]')
     password.send_keys(JOYCES_PASSWORD)
 
-    sign_in = driver.find_element(By.XPATH, '/html/body/div[3]/form[1]/div[6]/button')
-    sign_in.click()
+    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[3]/form[1]/div[6]/button'))).click()
 
     driver.get('https://www.tds.ms/CentralizeSP/BtwScheduling/Lessons?SchedulingTypeId=1')
 
@@ -63,9 +66,13 @@ async def main(ctx, oldelements):
 
     searched_role = get(guild.roles, name='Joyces')
 
+    print("Found " + str(len(elements) + len(elements2)))
+
     if (len(elements) + len(elements2) > 0 and newlen != origlen):
         await ctx.send(output)
         await ctx.send(searched_role.mention)
+    
+    driver.quit()
 
     return oldelements
 
