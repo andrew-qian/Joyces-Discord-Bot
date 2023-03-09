@@ -97,6 +97,6 @@ async def start(ctx):
 async def end(ctx):
     print("Manually ended program.")
     await ctx.send('Ending program...')
-    await ctx.bot.logout()
+    exit()
 
 bot.run(TOKEN)
