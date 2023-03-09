@@ -93,7 +93,7 @@ async def start(ctx):
 
 @bot.command(name= 'end')
 async def end(ctx):
-    if ctx.message.author.id =='380112064401899520':
+    if ctx.message.author.id == 380112064401899520:
         await ctx.send('Ending program...')
         await ctx.bot.logout()
 
