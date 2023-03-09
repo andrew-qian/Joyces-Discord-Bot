@@ -82,7 +82,7 @@ async def main(ctx, oldelements):
 
 @bot.event
 async def on_ready():
-    channel = 1075939560292360292
+    channel = bot.get_channel(1075939560292360292)
     iterations = 0
     while True:
         await channel.send("I haven't crashed yet! It's been " + (60 * iterations) +" minutes!")
