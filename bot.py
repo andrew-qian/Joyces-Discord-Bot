@@ -42,7 +42,7 @@ async def main(ctx, oldelements):
 
     # driver = webdriver.Chrome(chromedriver)
     try:
-        url = 'https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool'
+        driver.get('https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool')
     except (TimeoutException) as e:
         retries = 10
         if retries > 0:
@@ -52,8 +52,6 @@ async def main(ctx, oldelements):
         else:
             raise e
 
-
-    driver.get(url)
 
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
 
