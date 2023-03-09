@@ -10,6 +10,8 @@ import asyncio
 import os
 from discord.ext import commands
 from discord.utils import get
+from discord.ext import tasks
+
 
 TOKEN = os.environ['DISCORD_TOKEN']
 GUILD = os.environ['DISCORD_GUILD']
@@ -77,6 +79,15 @@ async def main(ctx, oldelements):
 
     return oldelements
 
+
+@bot.event
+async def on_ready():
+    channel = 1075939560292360292
+    iterations = 0
+    while True:
+        await channel.send("I haven't crashed yet! It's been " + (60 * iterations) +" minutes!")
+        iterations += 1
+        await asyncio.sleep(3600)
 
 
 @bot.command(name='start')
