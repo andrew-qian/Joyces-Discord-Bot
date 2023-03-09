@@ -80,6 +80,7 @@ async def main(ctx, oldelements):
 
 
 @bot.command(name='start')
+@commands.is_owner()
 async def start(ctx):
     oldelements = []
     await ctx.send('Starting program...')
@@ -92,9 +93,10 @@ async def start(ctx):
 
 
 @bot.command(name= 'end')
+@commands.is_owner()
 async def end(ctx):
-    if ctx.message.author.id == 380112064401899520:
-        await ctx.send('Ending program...')
-        await ctx.bot.logout()
+    print("Manually ended program.")
+    await ctx.send('Ending program...')
+    await ctx.bot.logout()
 
 bot.run(TOKEN)
