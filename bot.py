@@ -83,14 +83,6 @@ async def main(ctx, oldelements):
 @bot.event
 async def on_ready():
     print("Started.")
-    channel = bot.get_channel(1075939560292360292)
-    iterations = 0
-    while True:
-        print("Iteration " + iterations)
-        await channel.send("I haven't crashed yet! It's been " + (60 * iterations) +" minutes!")
-        iterations += 1
-        await asyncio.sleep(3600)
-
 
 @bot.command(name='start')
 @commands.is_owner()
