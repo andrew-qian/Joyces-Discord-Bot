@@ -79,11 +79,6 @@ async def main(ctx, oldelements):
 
     return oldelements
 
-
-@bot.event
-async def on_ready():
-    print("Started.")
-
 @bot.command(name='start')
 @commands.is_owner()
 async def start(ctx):
