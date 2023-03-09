@@ -25,7 +25,6 @@ intents.members = True
 bot = commands.Bot(command_prefix='-', intents=intents)
 
 async def main(ctx, oldelements):
-    retries = 10
     print("Searching...")
     origlen = len(oldelements)
     chrome_options = Options()
@@ -42,16 +41,16 @@ async def main(ctx, oldelements):
     # chromedriver = ChromeDriverManager().install()
 
     # driver = webdriver.Chrome(chromedriver)
-    while retries > 0:
-        try:
-            url = 'https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool'
-        except (TimeoutException) as e:
-            if retries > 0:
-                retries -= 1
-                print("Retries left {}, Continuing on {}".format(retries, traceback.format_exc()))
-                await asyncio.sleep(5)
-            else:
-                raise e
+    try:
+        url = 'https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool'
+    except (TimeoutException) as e:
+        retries = 10
+        if retries > 0:
+            retries -= 1
+            print("Retries left, " + retries + " Continuing on".format(retries, traceback.format_exc()))
+            await asyncio.sleep(5)
+        else:
+            raise e
 
 
     driver.get(url)
