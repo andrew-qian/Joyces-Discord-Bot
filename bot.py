@@ -6,11 +6,12 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 import asyncio
 import os
+import traceback
 from discord.ext import commands
 from discord.utils import get
-from discord.ext import tasks
 
 
 TOKEN = os.environ['DISCORD_TOKEN']
@@ -24,6 +25,7 @@ intents.members = True
 bot = commands.Bot(command_prefix='-', intents=intents)
 
 async def main(ctx, oldelements):
+    retries = 10
     print("Searching...")
     origlen = len(oldelements)
     chrome_options = Options()
@@ -40,9 +42,21 @@ async def main(ctx, oldelements):
     # chromedriver = ChromeDriverManager().install()
 
     # driver = webdriver.Chrome(chromedriver)
+    while retries > 0:
+        try:
+            url = 'https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool'
+        except (TimeoutException) as e:
+            if retries > 0:
+                retries -= 1
+                print("Retries left {}, Continuing on {}".format(retries, traceback.format_exc()))
+                await asyncio.sleep(5)
+            else:
+                raise e
 
-    url = 'https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool'
+
     driver.get(url)
+
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
 
     username = driver.find_element(By.XPATH, '//*[@id="username"]')
     username.send_keys(JOYCES_USERNAME)
