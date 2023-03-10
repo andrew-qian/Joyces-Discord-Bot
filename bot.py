@@ -108,8 +108,9 @@ async def start(ctx):
 @bot.command(name = 'available')
 async def available(ctx):
     await ctx.send("Searching...")
-    await ctx.send("Found " + str(len(await scrape())) + ".")
-    print("Found " + str(len(await scrape())) + ".")
+    amountAvailable = len(await scrape())
+    await ctx.send("Found " + str(amountAvailable) + ".")
+    print("Found " + str(amountAvailable) + ".")
 
 @bot.command(name= 'end')
 async def end(ctx):
