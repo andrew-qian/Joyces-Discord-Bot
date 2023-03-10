@@ -11,8 +11,7 @@ RUN wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/
   && apt install -y /tmp/chrome.deb \
   && rm /tmp/chrome.deb
 RUN apt-get install -y git
-ADD "https://api.github.com/repos/andrew-qian/Joyces-Discord-Bot/commits?per_page=1" latest_commit
-RUN curl -sLO "https://github.com/andrew-qian/Joyces-Discord-Bot/archive/main.zip" && unzip main.zip
+RUN git clone https://github.com/andrew-qian/Joyces-Discord-Bot.git
 WORKDIR "/Joyces-Discord-Bot"
 RUN ls
 RUN chmod a+x chromedriver
