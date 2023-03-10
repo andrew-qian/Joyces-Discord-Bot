@@ -13,7 +13,6 @@ import traceback
 from discord.ext import commands
 from discord.utils import get
 
-
 TOKEN = os.environ['DISCORD_TOKEN']
 GUILD = os.environ['DISCORD_GUILD']
 JOYCES_USERNAME = os.environ['JOYCES_USERNAME']
