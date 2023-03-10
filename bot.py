@@ -42,14 +42,10 @@ async def scrape():
     # driver = webdriver.Chrome(chromedriver)
     try:
         driver.get('https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool')
-    except (TimeoutException) as e:
-        retries = 10
-        if retries > 0:
-            retries -= 1
-            print("Retries left, " + retries + " Continuing on".format(retries, traceback.format_exc()))
-            await asyncio.sleep(5)
-        else:
-            raise e
+    except (TimeoutException):
+        print("lmao not working")
+
+    driver.get('https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool')
 
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
 
