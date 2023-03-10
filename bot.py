@@ -94,15 +94,17 @@ async def main(ctx, oldelements):
     return oldelements
 
 @bot.command(name='start')
-@commands.is_owner()
 async def start(ctx):
-    oldelements = []
-    await ctx.send('Starting program...')
+    if ctx.message.author.id == "380112064401899520":
+        oldelements = []
+        await ctx.send('Starting program...')
 
-    while (True):
-        oldelements = await main(ctx, oldelements)
+        while (True):
+            oldelements = await main(ctx, oldelements)
 
-        await asyncio.sleep(300)
+            await asyncio.sleep(300)
+    else:
+        await ctx.send("You do not own this bot.")
 
 @bot.command(name = 'available')
 async def available(ctx):
@@ -111,10 +113,12 @@ async def available(ctx):
     print("Found " + str(len(await scrape())) + ".")
 
 @bot.command(name= 'end')
-@commands.is_owner()
 async def end(ctx):
-    print("Manually ended program.")
-    await ctx.send('Ending program...')
-    exit()
+    if ctx.message.author.id == "380112064401899520":
+        print("Manually ended program.")
+        await ctx.send('Ending program...')
+        exit()
+    else:
+        await ctx.send("You do not own this bot.")
 
 bot.run(TOKEN)
