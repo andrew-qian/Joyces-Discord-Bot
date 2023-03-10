@@ -82,7 +82,6 @@ async def main(ctx, oldelements):
 
     oldelements = asyncio.run(scrape())
 
-
     output = "Joyce's BTW Available! (" + str(len(oldelements)) + ")"
     guild = discord.utils.get(bot.guilds, name=GUILD)
 
@@ -103,7 +102,7 @@ async def start(ctx):
     await ctx.send('Starting program...')
 
     while (True):
-        oldelements = await main(ctx, oldelements)
+        oldelements = asyncio.run(main(ctx, oldelements))
 
         await asyncio.sleep(300)
 
