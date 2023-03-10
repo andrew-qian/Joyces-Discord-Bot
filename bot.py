@@ -43,7 +43,8 @@ async def scrape():
     try:
         driver.get('https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool')
     except (TimeoutException):
-        print("lmao not working")
+        driver.get('https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool')
+
 
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
 
