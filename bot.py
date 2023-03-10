@@ -76,7 +76,6 @@ async def scrape():
 
     return oldelements
 
-
 async def main(ctx, oldelements):
     origlen = len(oldelements)
 
