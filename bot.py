@@ -80,7 +80,7 @@ async def scrape():
 async def main(ctx, oldelements):
     origlen = len(oldelements)
 
-    oldelements = asyncio.run(scrape())
+    oldelements = await scrape()
 
     output = "Joyce's BTW Available! (" + str(len(oldelements)) + ")"
     guild = discord.utils.get(bot.guilds, name=GUILD)
@@ -102,14 +102,14 @@ async def start(ctx):
     await ctx.send('Starting program...')
 
     while (True):
-        oldelements = asyncio.run(main(ctx, oldelements))
+        oldelements = await main(ctx, oldelements)
 
         await asyncio.sleep(300)
 
 @bot.command(name = 'available')
 async def available(ctx):
     await ctx.send("Searching...")
-    await ctx.send("Found " + str(len(asyncio.run(scrape()))) + ".")
+    await ctx.send("Found " + str(len(await scrape())) + ".")
 
 @bot.command(name= 'end')
 @commands.is_owner()
