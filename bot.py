@@ -110,6 +110,7 @@ async def start(ctx):
 async def available(ctx):
     await ctx.send("Searching...")
     await ctx.send("Found " + str(len(await scrape())) + ".")
+    print("Found " + str(len(await scrape())) + ".")
 
 @bot.command(name= 'end')
 @commands.is_owner()
