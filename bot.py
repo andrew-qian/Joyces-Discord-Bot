@@ -78,7 +78,6 @@ async def scrape():
 
 
 async def main(ctx, oldelements):
-    print("Searching...")
     origlen = len(oldelements)
 
     oldelements = await scrape()
