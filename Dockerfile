@@ -11,6 +11,7 @@ RUN wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/
   && apt install -y /tmp/chrome.deb \
   && rm /tmp/chrome.deb
 RUN apt-get install -y git
+ARG CACHEBUST=1
 RUN git clone https://github.com/andrew-qian/Joyces-Discord-Bot.git
 WORKDIR "/Joyces-Discord-Bot"
 RUN ls
