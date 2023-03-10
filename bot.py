@@ -24,9 +24,8 @@ intents.members = True
 
 bot = commands.Bot(command_prefix='-', intents=intents)
 
-async def main(ctx, oldelements):
+async def scrape():
     print("Searching...")
-    origlen = len(oldelements)
     chrome_options = Options()
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--headless')
@@ -71,22 +70,29 @@ async def main(ctx, oldelements):
     tbody = driver.find_element(By.XPATH, '//*[@id="datepicker"]/div/div[1]/table/tbody')
     elements = tbody.find_elements(By.CLASS_NAME, 'ui-state-available')
 
-    output = "Joyce's BTW Available! (" + str(len(elements) + len(elements2)) + ")"
-    guild = discord.utils.get(bot.guilds, name=GUILD)
-
     oldelements = elements + elements2
+    
+    driver.quit()
 
-    newlen = len(oldelements)
+    return oldelements
+
+
+async def main(ctx, oldelements):
+    print("Searching...")
+    origlen = len(oldelements)
+
+    oldelements = await scrape()
+
+    output = "Joyce's BTW Available! (" + str(len(oldelements)) + ")"
+    guild = discord.utils.get(bot.guilds, name=GUILD)
 
     searched_role = get(guild.roles, name='Joyces')
 
-    print("Found " + str(len(elements) + len(elements2)))
+    print("Found " + str(len(oldelements)))
 
-    if (len(elements) + len(elements2) > 0 and newlen != origlen):
+    if (len(oldelements) > 0 and len(oldelements) != origlen):
         await ctx.send(output)
         await ctx.send(searched_role.mention)
-    
-    driver.quit()
 
     return oldelements
 
@@ -101,7 +107,10 @@ async def start(ctx):
 
         await asyncio.sleep(300)
 
-
+@bot.command(name = 'available')
+async def available(ctx):
+    await ctx.send("Searching...")
+    await ctx.send("Found " + str(len(await scrape())) + ".")
 
 @bot.command(name= 'end')
 @commands.is_owner()
