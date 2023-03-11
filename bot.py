@@ -24,13 +24,13 @@ intents.members = True
 
 bot = commands.Bot(command_prefix='-', intents=intents)
 
-async def funnyFunc(driver):
+async def tryExcept(driver):
     try:
         driver.get('https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool')
     except (TimeoutException):
         print("Trying again...")
         asyncio.sleep(5)
-        funnyFunc(driver)
+        tryExcept(driver)
 
 
 async def scrape():
@@ -49,7 +49,7 @@ async def scrape():
     # chromedriver = ChromeDriverManager().install()
 
     # driver = webdriver.Chrome(chromedriver)
-    funnyFunc(driver)
+    tryExcept(driver)
 
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
 
