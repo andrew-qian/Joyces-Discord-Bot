@@ -45,7 +45,7 @@ async def scrape():
 
     chromedriver = "./chromedriver"
     driver = webdriver.Chrome(service = Service(chromedriver), options=chrome_options)
-    WebDriverWait.implicitly_wait(10)
+    await asyncio.sleep(10)
     # chromedriver = ChromeDriverManager().install()
 
     # driver = webdriver.Chrome(chromedriver)
