@@ -49,7 +49,7 @@ async def scrape():
     # chromedriver = ChromeDriverManager().install()
 
     # driver = webdriver.Chrome(chromedriver)
-    tryExcept(driver)
+    await tryExcept(driver)
 
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
 
