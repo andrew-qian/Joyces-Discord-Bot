@@ -27,7 +27,7 @@ bot = commands.Bot(command_prefix='-', intents=intents)
 async def tryExcept(driver):
     try:
         driver.get('https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool')
-    except (TimeoutException):
+    except:
         print("Trying again...")
         asyncio.sleep(5)
         tryExcept(driver)
