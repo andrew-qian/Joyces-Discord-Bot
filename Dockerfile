@@ -16,5 +16,8 @@ RUN git clone https://github.com/andrew-qian/Joyces-Discord-Bot.git
 WORKDIR "/Joyces-Discord-Bot"
 RUN ls
 RUN chmod a+x chromedriver
-RUN pip install -r requirements.txt
+RUN python3 -m venv .venv
+RUN source .venv/bin/activate
+RUN python3 -m pip install -r requirements.txt
+# RUN pip install -r requirements.txt
 CMD [ "python3", "-u", "bot.py" ]
