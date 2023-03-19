@@ -36,4 +36,5 @@ COPY chromedriver.exe .
 
 # Run the application:
 COPY bot.py .
+RUN ls
 CMD ["python", "bot.py"]
