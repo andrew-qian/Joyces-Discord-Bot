@@ -32,6 +32,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # Install dependencies:
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+COPY chromedriver.exe .
 
 # Run the application:
 COPY bot.py .
