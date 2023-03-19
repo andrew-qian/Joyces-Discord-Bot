@@ -9,7 +9,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import asyncio
 import os
-import traceback
 from discord.ext import commands
 from discord.utils import get
 
