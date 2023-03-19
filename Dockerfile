@@ -33,6 +33,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY chromedriver .
+RUN apt-get update 
 RUN apt -f install -y
 RUN apt-get install -y wget
 ARG CHROME_VERSION="109.0.5414.119-1"
