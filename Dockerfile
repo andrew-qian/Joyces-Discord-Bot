@@ -3,7 +3,7 @@ FROM ubuntu:23.04
 ARG DISCORD_TOKEN
 ARG DISCORD_GUILD
 RUN apt-get update 
-RUN apt-get install -y python3 python3-pip git wget
+RUN apt-get install -y python3 python3-pip git wget python3.11-venv
 ARG CHROME_VERSION="109.0.5414.119-1"
 RUN wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb \
   && apt install -y /tmp/chrome.deb \
