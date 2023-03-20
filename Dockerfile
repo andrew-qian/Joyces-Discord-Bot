@@ -1,5 +1,6 @@
 ARG CACHEBUST=1
 FROM ubuntu:23.04
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 ARG DISCORD_TOKEN
 ARG DISCORD_GUILD
 RUN apt-get update 
