@@ -105,6 +105,10 @@ async def start(ctx):
     else:
         await ctx.send("You do not own this bot.")
 
+@bot.command(name='omkar')
+async def omkar(ctx):
+    await ctx.send('Omkar is very mean to me :(')
+
 @bot.command(name = 'available')
 async def available(ctx):
     await ctx.send("Searching...")
